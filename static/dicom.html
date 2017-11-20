@@ -1,0 +1,151 @@
+<html>
+    <head>
+        <title>test</title>
+        <script src="/assets/javascripts/jquery.min.js"></script>
+        <script src="/assets/javascripts/film/jquery-ui.min.js"></script>
+        <script src="/assets/javascripts/film/jquery.ui.touch-punch.js"></script>
+        <script src="/assets/javascripts/film/hammer.min.js"></script>
+        <script src="/assets/javascripts/film/cornerstone.js"></script>
+        <script src="/assets/javascripts/film/cornerstoneFileImageLoader.js"></script>
+        <script src="/assets/javascripts/film/cornerstoneMath.min.js"></script>
+        <script src="/assets/javascripts/film/cornerstoneTools.js"></script>
+        <script src="/assets/javascripts/film/cornerstoneWADOImageLoader.js"></script>
+        <script src="/assets/javascripts/film/cornerstoneWebImageLoader.js"></script>
+        <script src="/assets/javascripts/film/dicomParser.js"></script>
+        <script src="/assets/javascripts/film/film_init.js"></script>
+        <script src="/assets/javascripts/film/film_util.js"></script>
+        <script src="/assets/javascripts/film/film_buttons.js"></script>
+        <script src="/assets/javascripts/film/film_reference_line.js"></script>
+        <script src="/assets/javascripts/film/film_load.js"></script>
+
+        <link rel="stylesheet" href="/assets/stylesheets/index_style.css">
+        <link rel="stylesheet" href="/assets/stylesheets/iconfont/iconfont.css">
+        <link rel="stylesheet" href="/assets/stylesheets/iconfont/iconfont2.css">
+    </head>
+    <body>
+        <div id="studyViewerTemplate" class="tab-pane active" style="height:100%">
+            <div class="studyContainer" style="height:100%;overflow:hidden;">
+                <div class="studyRow row" style="height:100%;margin:0;">
+                    <!-- Thumbnails -->
+                    <div class="thumbnailSelector thin-scroll">
+                        <div class="thumbnails list-group thin-scroll">
+                        </div>
+                    </div>
+                    <!-- Viewer -->
+                    <div class="viewer">
+                        <!-- Viewer -->
+                        <div class="text-center">
+                                <div class="image_btn_wrapper">
+                                        <div class="layout_wrapper">
+                                            <label class="choose-layout"><i class="radio-custom"></i><input name="layout" type="radio" value="" checked/>1x1</label>
+                                            <label class="choose-layout"><i class="radio-custom"></i><input name="layout" type="radio" value="" />1x2 </label><br>
+                                            <label class="choose-layout"><i class="radio-custom"></i><input name="layout" type="radio" value="" />2x1 </label>
+                                            <label class="choose-layout"><i class="radio-custom checked" style="left:6px;"></i><input style="width:33px;" name="layout" type="radio" value="" />2x2</label>
+                                        </div>
+                                        <div class="image_btn">
+                                            <i class="iconfont icon-chuangkuanchuangwei"></i><br>
+                                            <span>窗宽/窗位</span>
+                                        </div>
+                                        <div class="image_btn">
+                                            <i class="iconfont icon-fanzhuan"></i><br>
+                                            <span>反转</span>
+                                        </div>
+                                        <div class="image_btn">
+                                            <i class="iconfont icon-iconset0442"></i><br>
+                                            <span>缩放</span>
+                                        </div>
+                                        <div class="image_btn">
+                                            <i class="iconfont icon-yidong"></i><br>
+                                            <span>移动</span>
+                                        </div>
+                                        <div class="image_btn">
+                                            <i class="iconfont icon-xibaoxianhuo"></i><br>
+                                            <span>片层</span>
+                                        </div>
+                                        <div class="image_btn">
+                                            <i class="iconfont icon-changduceliang"></i><br>
+                                            <span>长度</span>
+                                        </div>
+                                        <div class="image_btn">
+                                            <i class="iconfont icon-jiaoduceliang"></i><br>
+                                            <span>角度</span>
+                                        </div>
+                                        <div class="image_btn">
+                                            <i class="iconfont icon-jiancedian"></i><br>
+                                            <span>测点</span>
+                                        </div>
+                                        <div class="image_btn">
+                                            <i class="iconfont icon-yuan"></i><br>
+                                            <span>圆形</span>
+                                        </div>
+                                        <div class="image_btn">
+                                            <i class="iconfont icon-juxing"></i><br>
+                                            <span>矩形</span>
+                                        </div>
+                                        <div class="image_btn">
+                                            <i class="iconfont icon-bofang"></i><br>
+                                            <span>播放</span>
+                                        </div>
+                                        <div class="image_btn">
+                                            <i class="iconfont icon-tingzhi"></i><br>
+                                            <span>停止</span>
+                                        </div>
+                                        <div class="image_btn">
+                                            <i class="iconfont icon-qingli"></i><br>
+                                            <span>清理</span>
+                                        </div>
+                                        <div class="image_btn">
+                                            <i class="iconfont icon-zhongzhi"></i><br>
+                                            <span>重置</span>
+                                        </div>
+                                    </div>
+                                </div>
+                        <div class="imageViewer">
+                        </div>
+                    </div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+        <script>
+            var imageViewer;
+            $().ready(function(){
+                $.ajax({ 
+                    type:'GET', 
+                    url:'/api/dicom/meeting59',
+                    dataType: "JSON",
+                    success:function(data){
+                        var study = data;
+                        loadTemplate("/assets/html/film_viewport.html", function(element) {
+                            console.log("DD",element);
+                            imageViewer = new ImageViewer($("#studyViewerTemplate"), element);
+                            // Now load the study.json
+                            loadStudy($("#studyViewerTemplate"), element,imageViewer, study);
+                        });
+                    }
+                }); 
+            });
+
+            // 加载模板
+            var loadTemplate = function(url, callback) {
+                $.get(url, function(data) {
+                    var parsed = $.parseHTML(data);
+                    $.each(parsed, function(index, ele) {
+                        if (ele.nodeName === 'DIV') {
+                            var element = $(ele);
+                            callback(element);
+                        }
+                    });
+                });
+            };
+       
+    // 安装工具条功能
+    setupButtons($(".image_btn_wrapper"));
+
+    $('.choose-layout').click(function() {
+        $(this).find('i').addClass('checked').parent().siblings().find('i').removeClass('checked');
+    });
+
+        </script>
+    </body>
+</html>
