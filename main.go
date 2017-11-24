@@ -9,7 +9,8 @@ import (
 )
 
 // DICOMServerURL DICOMServerURL
-const DICOMServerURL string = "http://dicomtest.tongxinyiliao.com/api/getByFilmNo"
+// const DICOMServerURL string = "http://dicomtest.tongxinyiliao.com/api/getByFilmNo"
+const DICOMServerURL string = "http://47.93.132.62/api/getByFilmNo"
 
 func main() {
 	e := echo.New()
