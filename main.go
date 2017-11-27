@@ -8,10 +8,7 @@ import (
 	"github.com/labstack/echo"
 )
 
-// DICOMServerURL DICOMServerURL
-// const DICOMServerURL string = "http://dicomtest.tongxinyiliao.com/api/getByFilmNo"
-
-// const DICOMServerURL string = "http://47.93.132.62/api/getByFilmNo" // 测试正解
+// const DICOMServerURL string = "http://47.93.132.62/api/getByFilmNo" // 测试
 const DICOMServerURL string = "http://dicomup.tongxinyiliao.com/api/getByFilmNo" // 生产
 
 func main() {
