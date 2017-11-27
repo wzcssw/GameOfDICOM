@@ -1,7 +1,7 @@
 package main
 
 import (
-	"GameOfDICOM/lib"
+	"MedicalBodyParts/lib"
 	"net/http"
 
 	"github.com/GeertJohan/go.rice" // 静态文件服务
