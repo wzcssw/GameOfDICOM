@@ -1,26 +1,26 @@
 <html>
     <head>
         <title>test</title>
-        <script src="/assets/javascripts/jquery.min.js"></script>
-        <script src="/assets/javascripts/film/jquery-ui.min.js"></script>
-        <script src="/assets/javascripts/film/jquery.ui.touch-punch.js"></script>
-        <script src="/assets/javascripts/film/hammer.min.js"></script>
-        <script src="/assets/javascripts/film/cornerstone.js"></script>
-        <script src="/assets/javascripts/film/cornerstoneFileImageLoader.js"></script>
-        <script src="/assets/javascripts/film/cornerstoneMath.min.js"></script>
-        <script src="/assets/javascripts/film/cornerstoneTools.js"></script>
-        <script src="/assets/javascripts/film/cornerstoneWADOImageLoader.js"></script>
-        <script src="/assets/javascripts/film/cornerstoneWebImageLoader.js"></script>
-        <script src="/assets/javascripts/film/dicomParser.js"></script>
-        <script src="/assets/javascripts/film/film_init.js"></script>
-        <script src="/assets/javascripts/film/film_util.js"></script>
-        <script src="/assets/javascripts/film/film_buttons.js"></script>
-        <script src="/assets/javascripts/film/film_reference_line.js"></script>
-        <script src="/assets/javascripts/film/film_load.js"></script>
+        <script src="/javascripts/jquery.min.js"></script>
+        <script src="/javascripts/film/jquery-ui.min.js"></script>
+        <script src="/javascripts/film/jquery.ui.touch-punch.js"></script>
+        <script src="/javascripts/film/hammer.min.js"></script>
+        <script src="/javascripts/film/cornerstone.js"></script>
+        <script src="/javascripts/film/cornerstoneFileImageLoader.js"></script>
+        <script src="/javascripts/film/cornerstoneMath.min.js"></script>
+        <script src="/javascripts/film/cornerstoneTools.js"></script>
+        <script src="/javascripts/film/cornerstoneWADOImageLoader.js"></script>
+        <script src="/javascripts/film/cornerstoneWebImageLoader.js"></script>
+        <script src="/javascripts/film/dicomParser.js"></script>
+        <script src="/javascripts/film/film_init.js"></script>
+        <script src="/javascripts/film/film_util.js"></script>
+        <script src="/javascripts/film/film_buttons.js"></script>
+        <script src="/javascripts/film/film_reference_line.js"></script>
+        <script src="/javascripts/film/film_load.js"></script>
 
-        <link rel="stylesheet" href="/assets/stylesheets/index_style.css">
-        <link rel="stylesheet" href="/assets/stylesheets/iconfont/iconfont.css">
-        <link rel="stylesheet" href="/assets/stylesheets/iconfont/iconfont2.css">
+        <link rel="stylesheet" href="/stylesheets/index_style.css">
+        <link rel="stylesheet" href="/stylesheets/iconfont/iconfont.css">
+        <link rel="stylesheet" href="/stylesheets/iconfont/iconfont2.css">
     </head>
     <body>
         <div id="studyViewerTemplate" class="tab-pane active" style="height:100%">
@@ -99,7 +99,7 @@
                                             <i class="iconfont icon-zhongzhi"></i><br>
                                             <span>重置</span>
                                         </div>
-                                        <div style="cursor:pointer;width:70px;height:35px;line-height:35px;text-align:center;float:right;background:#1fa7a6;border-radius:5px;color:#fff;margin-top:24px;margin-right:30px;" onclick="window.location='/assets/index.html' ">返回</div>
+                                        <div style="cursor:pointer;width:70px;height:35px;line-height:35px;text-align:center;float:right;background:#1fa7a6;border-radius:5px;color:#fff;margin-top:24px;margin-right:30px;" onclick="window.location='/index.html' ">返回</div>
                                     </div>
                                 </div>
                         <div class="imageViewer">
@@ -126,7 +126,7 @@
                     dataType: "JSON",
                     success:function(data){
                         var study = data;
-                        loadTemplate("/assets/html/film_viewport.html", function(element) {
+                        loadTemplate("/html/film_viewport.html", function(element) {
                             imageViewer = new ImageViewer($("#studyViewerTemplate"), element);
                             // Now load the study.json
                             loadStudy($("#studyViewerTemplate"), element,imageViewer, study);

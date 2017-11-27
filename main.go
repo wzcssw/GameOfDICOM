@@ -22,7 +22,7 @@ func main() {
 
 	// 静态文件服务
 	assetHandler := http.FileServer(rice.MustFindBox("static").HTTPBox())
-	e.GET("/assets/*", echo.WrapHandler(http.StripPrefix("/assets/", assetHandler)))
+	e.GET("/*", echo.WrapHandler(http.StripPrefix("/", assetHandler)))
 
 	e.Logger.Fatal(e.Start(":1323"))
 }
