@@ -4,13 +4,15 @@ import (
 	"GameOfDICOM/lib"
 	"net/http"
 
-	"github.com/GeertJohan/go.rice"
+	"github.com/GeertJohan/go.rice" // 静态文件服务
 	"github.com/labstack/echo"
 )
 
 // DICOMServerURL DICOMServerURL
 // const DICOMServerURL string = "http://dicomtest.tongxinyiliao.com/api/getByFilmNo"
-const DICOMServerURL string = "http://47.93.132.62/api/getByFilmNo"
+
+// const DICOMServerURL string = "http://47.93.132.62/api/getByFilmNo" // 测试正解
+const DICOMServerURL string = "http://dicomup.tongxinyiliao.com/api/getByFilmNo" // 生产
 
 func main() {
 	e := echo.New()
