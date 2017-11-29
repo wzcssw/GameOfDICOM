@@ -155,7 +155,8 @@ function loadStudy(studyViewer, viewportModel,imageViewer, data) {
     }else{
         $('.thumbnails').css({
             'overflow-y':'auto',
-            'overflow-x':'hidden'
+            'overflow-x':'hidden',
+            'height':'calc(100% - 80px)'
         });
     }
     // Call resize viewer on window resize
@@ -283,7 +284,7 @@ function resizeStudyViewer(imageViewer) {
     var height = $(studyRow).height();
     var width = $(studyRow).width();
     console.log($(studyRow).innerWidth(), $(studyRow).outerWidth(), $(studyRow).width());
-    $(seriesList).height("100%");
+    // $(seriesList).height("100%");
     $(parentDiv).width(width - $(studyViewer).find('.thumbnailSelector:eq(0)').width());
     $(parentDiv).css({ height: '100%' });
     $(imageViewerElement).css({ height: $(parentDiv).height() - $(parentDiv).find('.text-center:eq(0)').height() });
