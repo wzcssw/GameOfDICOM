@@ -365,13 +365,13 @@
                     var clsName = self.attr('class');
                     self.attr("raw_class",self.find('path').attr("class"));
                     $('.'+clsName+' path').attr('class','in');
-                    $('.'+clsName+' path').css({'transform':'scale(1.1)','transform-origin':'center center'});
+                    $('.'+clsName+' path').css({'transform':'scale(1.1)','transform-origin':'center center','transform-box': 'fill-box'});
                 },function(){
                     var self = $(this);
                     var clsName = self.attr('class');
                     var raw_class = self.attr("raw_class");
                     $('.'+clsName+' path').attr('class',raw_class);
-                    $('.'+clsName+' path').css({'transform':'scale(1.0)','transform-origin':'center center'});
+                    $('.'+clsName+' path').css({'transform':'scale(1.0)','transform-origin':'center center','transform-box': 'fill-box'});
                 });
                 //  点击事件
                 $("g").click(function(){
