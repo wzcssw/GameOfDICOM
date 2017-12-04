@@ -15,6 +15,7 @@ import (
 // SendDicomAPIRequest a
 func SendDicomAPIRequest(url string, params map[string]string) string {
 	params["app_key"] = "SsiYrf"
+	params["token"] = "QpFd1F9aInz2"
 	params["timestamp"] = time.Now().Format("2006-01-02 15:04:05")
 	params["sign"] = sign(params)
 	paramsString := urlencode(params)
@@ -32,7 +33,7 @@ func SendDicomAPIRequest(url string, params map[string]string) string {
 }
 
 func sign(params map[string]string) string {
-	result := "app_key" + params["app_key"] + "filmno" + params["filmno"] + "timestamp" + params["timestamp"]
+	result := params["token"] + "app_key" + params["app_key"] + "filmno" + params["filmno"] + "timestamp" + params["timestamp"] + params["token"]
 	return strings.ToUpper(GetMD5Hash(result))
 }
 
