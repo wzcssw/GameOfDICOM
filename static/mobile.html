@@ -1,0 +1,118 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+<link rel="stylesheet" type="text/css" href="/stylesheets/patientExamReports/doctor-imaging.css"/>
+<link rel="stylesheet" type="text/css" href="/stylesheets/patientExamReports/jquery.range.css"/>
+<link rel="stylesheet" type="text/css" href="/stylesheets/patientExamReports/app.css"/>
+<link rel="stylesheet" href="/stylesheets/patientExamReports/iconfont.css">
+<body>
+    <div style="width:100%;height:100%;background-color:#000;">
+    <div class="imge divImage" oncontextmenu="return false" class='disable-selection noIbar'
+      unselectable='on' onselectstart='return false;' onmousedown='return false;'>
+      <div id="dicomImage"></div>
+      <div id="mrbottomleft">
+        <div id="wwText"></div>
+        <div id="zoomText"></div>
+      </div>
+      <div id="mrbottomright">
+        <div id="sliceText"></div>
+      </div>
+    </div>
+    <div id="wrapper" class="picker">
+        <div class="pick_img">
+
+        </div>
+    </div>
+
+
+    <div class="progress">
+        <span id="btnPlayClip"><i class="iconfont icon-bofang"></i></span>
+        <span id="btnPrev"><i class="iconfont icon-xiangzuo"></i></span>
+        <span><input type="hidden" class="single-slider" value="1" /></span>
+        <span id="btnNext"><i class="iconfont icon-xiangyou"></i></span>
+    </div>
+
+    <div class="tools_wrapper">
+        <ul class="super_floor">
+            <li id="btnLength">
+                <i class="iconfont icon-zhixianceliang"></i>
+                <span>直线</span>
+            </li>
+            <li id="btnRectangleroi">
+                <i class="iconfont icon-juxing"></i>
+                <span>矩形</span>
+            </li>
+            <li id="btnCircle">
+                <i class="iconfont icon-tuoyuan"></i>
+                <span>椭圆</span>
+            </li>
+            <li id="btnProbe">
+                <i class="iconfont icon-tanzhen"></i>
+                <span>探针</span>
+            </li>
+            <li id="btnRotate">
+                <i class="iconfont icon-ziyouxuanzhuan"></i>
+                <span>自由旋</span>
+            </li>
+            <li id="btnGlass">
+                <i class="iconfont icon-fangdajing"></i>
+                <span>放大镜</span>
+            </li>
+        </ul>
+        <ul class="bottom_floor">
+            <li id="btnAjustWin">
+                <i class="iconfont icon-diaochuang"></i>
+                <span>调窗</span>
+            </li>
+            <li id="btnInvert">
+                <i class="iconfont icon-tuxiangfanse"></i>
+                <span>反色</span>
+            </li>
+            <li id="btnMoves">
+                <i class="iconfont icon-yidong-"></i>
+                <span>移动</span>
+            </li>
+            <li id="btnClear">
+                <i class="iconfont icon-qingli"></i>
+                <span>清理</span>
+            </li>
+            <li id="btnReset">
+                <i class="iconfont icon-zhongzhi"></i>
+                <span>重置图像</span>
+            </li>
+            <li id="btnZhujie">
+                <i class="iconfont icon-hide"></i>
+                <span>隐藏注解</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="tabbar">
+        <div class="order">
+            <i class="iconfont icon-xuanzexulie"></i>
+            <span>序列</span>
+        </div>
+        <div class="tools">
+            <i class="iconfont icon-m-weixinwenzhang"></i>
+            <span>工具</span>
+        </div>
+    </div>
+    </div>
+</body>
+<script src="/javascripts/patientExamReports/jquery.min.js"></script>
+<script src="/javascripts/patientExamReports/touch-emulator.js"></script>
+<script>TouchEmulator();</script>
+<script src="/javascripts/patientExamReports/hammer.min.js"></script>
+<script src="/javascripts/patientExamReports/cornerstone.min.js"></script>
+<script src="/javascripts/patientExamReports/cornerstoneMath.js"></script>
+<script src="/javascripts/patientExamReports/cornerstoneTools.js"></script>
+<script src="/javascripts/patientExamReports/dicomParser.min.js"></script>
+<script src="/javascripts/patientExamReports/jpx.min.js"></script>
+<script src="/javascripts/patientExamReports/cornerstoneWADOImageLoader.js"></script>
+<script src="/javascripts/patientExamReports/jquery.range.js"></script>
+<script src="/javascripts/patientExamReports/iscroll.lite.js"></script>
+<script src="/javascripts/patientExamReports/tabbar.js"></script>
+<script src="/javascripts/patientExamReports/common.js"></script>
+<script src="/javascripts/patientExamReports/app.js"></script>
+</html>

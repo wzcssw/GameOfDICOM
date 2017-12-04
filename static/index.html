@@ -323,9 +323,24 @@
                 <text transform="matrix(1 0 0 1 334.5447 334.2737)"><tspan x="0" y="0" class="st2 st3 st4">脊</tspan><tspan x="0" y="16.8" class="st2 st3 st4">柱</tspan></text>
             </g>
             </svg>
-            <img src="/asd.jpg" alt="">
         <script>
             $().ready(function(){
+                //判断是否手机登陆
+                var is_mobile = false;
+                function isMobile() {
+                    var sUserAgent = navigator.userAgent.toLowerCase();
+                    var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+                    var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+                    var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+                    var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+                    var bIsAndroid = sUserAgent.match(/android/i) == "android";
+                    var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+                    var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+                    if ((bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) ){
+                        is_mobile = true;
+                    }
+                }
+                isMobile();
                 // 获得当前SVG高度
                 var get_page_height = function(){
                     var height = $("#the_svg").attr("height");
@@ -354,19 +369,15 @@
                     }
                 });
                 // 共有hover
-                $("path[body-name='hand']").hover(function(){
-                    // $(this).attr("fill","#fd8668");
-                    $(this).addClass('in');
-                },function(){
-                    $(this).removeClass('in');
-                })
                 $("g").hover(function(){
+                    if(is_mobile) return;
                     var self = $(this);
                     var clsName = self.attr('class');
                     self.attr("raw_class",self.find('path').attr("class"));
                     $('.'+clsName+' path').attr('class','in');
                     $('.'+clsName+' path').css({'transform':'scale(1.1)','transform-origin':'center center','transform-box': 'fill-box'});
                 },function(){
+                    if(is_mobile) return;
                     var self = $(this);
                     var clsName = self.attr('class');
                     var raw_class = self.attr("raw_class");
@@ -378,7 +389,10 @@
                     var self = $(this);
                     var clsName = self.attr('class');
                     var bodyName = self.attr('body-name');
-                    
+                    if(is_mobile){
+                        window.location.href = "/mobile.html?file_no=" + clsName;
+                        return;
+                    }
                     window.location.href = "/dicom.html?file_no=" + clsName + "&body=" + bodyName;
                 });
             });
